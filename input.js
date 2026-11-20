@@ -1,5 +1,5 @@
 // Input manager: maps keys to actions. held() = down now, hit() = pressed this frame.
-const MAP={w:'up',arrowup:'up',s:'down',arrowdown:'down',a:'left',arrowleft:'left',d:'right',arrowright:'right',e:'act',' ':'act',i:'inv',m:'map',j:'journal',escape:'back','?':'help'};
+const MAP={w:'up',arrowup:'up',s:'down',arrowdown:'down',a:'left',arrowleft:'left',d:'right',arrowright:'right',e:'act',' ':'act',enter:'act',i:'inv',m:'map',j:'journal',escape:'back','?':'help'};
 const norm=e=>MAP[e.key.toLowerCase()];
 export class Input{
   constructor(){this.down=new Set();this.pressed=new Set();

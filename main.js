@@ -31,8 +31,9 @@ g.interact=()=>{
 };
 function update(dt){
   const i=g.input,ui=g.ui;g.scenes.update(dt);
-  if(ui.active||ui.tt>0)ui.update(i,dt);
-  if(ui.active||g.mode!=='play'||g.scenes.busy)return;   // modal UI has exclusive input
+  const modal=ui.active;   // sampled BEFORE update, so the key that closes a modal is consumed
+  if(modal||ui.tt>0)ui.update(i,dt);
+  if(modal||g.mode!=='play'||g.scenes.busy)return;   // modal UI has exclusive input
   if(i.hit('back'))ui.open(pauseMenu(g));
   else if(i.hit('help'))ui.open(manualMenu(g));
   else if(i.hit('inv'))ui.open(invPage(g));

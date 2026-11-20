@@ -15,7 +15,8 @@ export class UI{
   update(inp,dt){
     if(this.tt>0)this.tt-=dt;
     const d=this.dlg;
-    if(d){const L=d.lines[d.n];d.c=Math.min(L.length,d.c+dt*(this.g.settings.fast?90:35));
+    if(d){if(inp.hit('back')){this.dlg=null;d.done&&d.done();return}
+      const L=d.lines[d.n];d.c=Math.min(L.length,d.c+dt*(this.g.settings.fast?90:35));
       if(inp.hit('act')){if(d.c<L.length)d.c=L.length;else if(++d.n>=d.lines.length){this.dlg=null;d.done&&d.done()}else d.c=0}
       return}
     const m=this.stack.at(-1);if(!m)return;
